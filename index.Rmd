@@ -1,0 +1,128 @@
+---
+title       : Pe'ah Garden stats
+subtitle    : Results for 2013
+author      : Scott Gaul
+job         : Pe'ah stats person
+framework   : minimal      # 
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+ext_widgets : {rCharts: ["libraries/nvd3", "libraries/morris"]} 
+mode        : selfcontained # {standalone, draft}
+---
+
+## 2013 overall results
+
+2013 had the lowest yields so far. We grew 608 pounds of vegetables or about 68,000 calories - roughly one month of food for an adult. This is less than 1/2 last year's total.
+
+```{r setup, message = F, echo = F, cache = F}
+require(rCharts)
+knitr::opts_chunk$set(comment = NA, results = 'asis', tidy = F, message = T)
+```
+
+
+```{r chart 1, echo = FALSE, message = FALSE, warning = FALSE}
+n1 <- nPlot(y = 'Calories', x = 'Year', 
+            width = 500, height = 300,
+            data = ddply(peah, .(Year), summarise, 
+                    Pounds = sum(Pounds),
+                    Calories = sum(Calories)),
+            type = 'lineChart')
+n1$xAxis(axisLabel='Year')
+n1$yAxis(tickFormat = "#!function(d) {return d3.format(',.0f')(d)}!#", axisLabel='Calories')
+n1$chart(forceY = c(0,170000))
+n1$print('chart1')
+```
+
+And again in pounds
+
+```{r chart 2, echo = FALSE, message = FALSE, warning = FALSE}
+n1 <- nPlot(y = 'Pounds', x = 'Year', 
+            width = 500, height = 300,
+            data = ddply(peah, .(Year), summarise, 
+                    Pounds = sum(Pounds),
+                    Calories = sum(Calories)),
+            type = 'lineChart')
+n1$xAxis(axisLabel='Year')
+n1$yAxis(tickFormat = "#!function(d) {return d3.format(',.0f')(d)}!#", axisLabel='Pounds')
+n1$chart(forceY = c(0,1700))
+n1$print('chart2')
+```
+
+
+## 2013 individual results
+
+Individual results for the year are listed in the table below; some gardeners harvested more than one crop for the pe'ah contribution. 
+
+
+```{r, results='asis', echo = FALSE, message = FALSE, warning = FALSE, fig.height = 8}
+library(xtable)
+table <- ddply(peah13, .(Name, Crop), summarise, 
+               Pounds = round(sum(Pounds),0), 
+               Calories = round(sum(Calories),0))
+print(xtable(table, digits = 0), type = "html")
+```
+
+Congratulations Courtney and Michelle and Julie and David! They had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=3}
+peah13byplot <- ddply(peah13, .(Name), summarise, Pounds = sum(Pounds), Calories = sum(Calories))
+peah13byplot$Name <- reorder(peah13byplot$Name, peah13byplot$Calories)
+qplot(data = peah13byplot, y = Name, x = Calories) + 
+  labs(y = NULL) + 
+  theme_minimal()
+
+peah13byplot$Name <- reorder(peah13byplot$Name, peah13byplot$Pounds)
+qplot(data = peah13byplot, y = Name, x = Pounds) + 
+  labs(y = NULL) + 
+  theme_minimal()
+```
+
+A few crops did better than others. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=3}
+peah13bycrop <- ddply(peah13, .(Crop), summarise, Pounds = sum(Pounds), Calories = sum(Calories))
+peah13bycrop$Crop <- reorder(peah13bycrop$Crop, peah13bycrop$Calories)
+qplot(data = peah13bycrop, y = Crop, x = Calories) + 
+  labs(y = NULL) + 
+  theme_minimal()
+
+peah13bycrop$Crop <- reorder(peah13bycrop$Crop, peah13bycrop$Pounds)
+qplot(data = peah13bycrop, y = Crop, x = Pounds) + 
+  labs(y = NULL) + 
+  theme_minimal()
+```
+
+
+## Comparison with prior years
+
+The lower yields were basically across-the-board - it was a bad year for pretty much everything we planted. 
+
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=6}
+ggplot(data = subset(yearly, Crop %in% unique(peah13$Crop)), aes(x = Year, y = Calories.per.plot)) + 
+  geom_line() + 
+  scale_y_continuous(labels = comma) + 
+  geom_point(data = subset(yearly, Year == 2013 & Crop %in% unique(peah13$Crop)), aes(x = Year, y = Calories.per.plot), colour = "red") + 
+  theme_bw() + 
+  facet_wrap(~ Crop)
+```
+
+Can look at cumulative harvests by week. Here are tomato harvests for the past few years. 
+
+```{r chart3, echo = FALSE, message = FALSE, warning = FALSE}
+tomatoes <- cast(subset(peah, Crop == "tomatoes" & Year > 2008), 
+              Crop + Week ~ Year, value = "Pounds", sum)
+tomatoes[3:7] <- cumsum(tomatoes[3:7])
+tomatoes <- melt(tomatoes, 
+                 id.vars = c("Crop", "Week"))
+p <- nPlot(value ~ Week, 
+           width = 500, height = 300,
+           group = "Year", 
+           data = tomatoes, 
+           type = 'lineChart')
+p$print('chart3')
+```
+
+
+
+
