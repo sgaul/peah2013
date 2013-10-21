@@ -13,7 +13,7 @@ mode        : selfcontained # {standalone, draft}
 
 ## 2013 overall results
 
-2013 had the lowest yields so far. We grew 608 pounds of vegetables or about 68,000 calories - roughly one month of food for an adult. This is less than 1/2 last year's total.
+2013 had the lowest yields for any year to date. We grew 608 pounds of vegetables or about 68,000 calories - roughly one month of food for an adult. This is less than 1/2 last year's total, although still a lot of food.
 
 ```{r setup, message = F, echo = F, cache = F}
 require(rCharts)
@@ -34,7 +34,7 @@ n1$chart(forceY = c(0,170000))
 n1$print('chart1')
 ```
 
-And again in pounds
+Here is the same result in pounds harvested. 
 
 ```{r chart 2, echo = FALSE, message = FALSE, warning = FALSE}
 n1 <- nPlot(y = 'Pounds', x = 'Year', 
@@ -52,8 +52,7 @@ n1$print('chart2')
 
 ## 2013 individual results
 
-Individual results for the year are listed in the table below; some gardeners harvested more than one crop for the pe'ah contribution. 
-
+Individual results for the year are listed in the table below. (Some gardeners harvested more than one crop for the pe'ah contribution, so each crop is shown in that case.)  
 
 ```{r, results='asis', echo = FALSE, message = FALSE, warning = FALSE, fig.height = 8}
 library(xtable)
@@ -63,7 +62,7 @@ table <- ddply(peah13, .(Name, Crop), summarise,
 print(xtable(table, digits = 0), type = "html")
 ```
 
-Congratulations Courtney and Michelle and Julie and David! They had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
+Congratulations Courtney, Michelle, Julie and David! These two groups had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=3}
 peah13byplot <- ddply(peah13, .(Name), summarise, Pounds = sum(Pounds), Calories = sum(Calories))
@@ -78,7 +77,7 @@ qplot(data = peah13byplot, y = Name, x = Pounds) +
   theme_minimal()
 ```
 
-A few crops did better than others. 
+A few crops did better than others for the year. 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=3}
 peah13bycrop <- ddply(peah13, .(Crop), summarise, Pounds = sum(Pounds), Calories = sum(Calories))
@@ -93,10 +92,9 @@ qplot(data = peah13bycrop, y = Crop, x = Pounds) +
   theme_minimal()
 ```
 
-
 ## Comparison with prior years
 
-The lower yields were basically across-the-board - it was a bad year for pretty much everything we planted. 
+Lower yields were basically across-the-board - it was a historically bad year for pretty much everything we planted. 
 
 ```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=6}
 ggplot(data = subset(yearly, Crop %in% unique(peah13$Crop)), aes(x = Year, y = Calories.per.plot)) + 
@@ -107,20 +105,34 @@ ggplot(data = subset(yearly, Crop %in% unique(peah13$Crop)), aes(x = Year, y = C
   facet_wrap(~ Crop)
 ```
 
-Can look at cumulative harvests by week. Here are tomato harvests for the past few years. 
+The charts below show the cumulative harvests (in pounds) by week for the past several years. These can help compare the current harvest at any point to prior years. Choose the crop you want and add / remove years if needed. 
 
+<style>
+iframe{
+  height:600px;
+  width:700px;
+  margin:auto auto;
+}
+</style>
 ```{r chart3, echo = FALSE, message = FALSE, warning = FALSE}
-tomatoes <- cast(subset(peah, Crop == "tomatoes" & Year > 2008), 
+crops <- unique(cumul$Crop)
+cumul <- cast(subset(peah, Year > 2008), 
               Crop + Week ~ Year, value = "Pounds", sum)
-tomatoes[3:7] <- cumsum(tomatoes[3:7])
-tomatoes <- melt(tomatoes, 
-                 id.vars = c("Crop", "Week"))
-p <- nPlot(value ~ Week, 
-           width = 500, height = 300,
-           group = "Year", 
-           data = tomatoes, 
+cumsum <- data.frame(Crop=NA, Week=NA, variable=NA, value=NA)
+for (i in 1:length(crops)) 
+  {x <- subset(cumul, Crop == crops[i])
+   x[3:7] <- cumsum(x[3:7])
+   x <- melt(as.data.frame(x), id.vars = c("Crop", "Week"))
+   cumsum <- rbind(cumsum, x)
+}
+cumsum <- cast(cumsum, Week + variable ~ Crop, value = "value", sum)
+
+p <- nPlot(tomatoes ~ Week, 
+           group = "variable", width = 500,
+           data = test, 
            type = 'lineChart')
-p$print('chart3')
+p$addControls("y", value = "tomatoes", values = levels(cumul$Crop))
+p
 ```
 
 

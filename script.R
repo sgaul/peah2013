@@ -45,18 +45,4 @@ ggplot(data = ddply(peah, .(Year), summarise,
 peah$Date <- as.Date(peah$Date, format = "%m/%d/%Y")
 peah$Week = as.integer(format(strptime(peah$Date,"%Y-%m-%d"),"%W"))
 
-cumul <- cast(subset(peah, Year > 2008), 
-              Crop + Week ~ Year, value = "Pounds", sum)
 
-crops <- unique(cumul$Crop)
-
-for (i in 1:length(crops)) 
-  {x <- subset(cumul, Crop == crops[i])
-   x[3:7] <- cumsum(x[3:7])
-   x <- melt(as.data.frame(x), id.vars = c("Crop", "Week"))
-   p <- nPlot(value ~ Week, 
-              group = "variable",
-              data = x,
-              type = 'lineChart')
-   p
- }

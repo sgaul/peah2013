@@ -13,7 +13,7 @@ mode        : selfcontained # {standalone, draft}
 
 ## 2013 overall results
 
-2013 had the lowest yields so far. We grew 608 pounds of vegetables or about 68,000 calories - roughly one month of food for an adult. This is less than 1/2 last year's total.
+2013 had the lowest yields for any year to date. We grew 608 pounds of vegetables or about 68,000 calories - roughly one month of food for an adult. This is less than 1/2 last year's total, although still a lot of food.
 
 
 
@@ -136,7 +136,7 @@ mode        : selfcontained # {standalone, draft}
 </script>
 
 
-And again in pounds
+Here is the same result in pounds harvested. 
 
 
 <div id = 'chart2' class = 'rChart nvd3'></div>
@@ -258,8 +258,7 @@ And again in pounds
 
 ## 2013 individual results
 
-Individual results for the year are listed in the table below; some gardeners harvested more than one crop for the pe'ah contribution. 
-
+Individual results for the year are listed in the table below. (Some gardeners harvested more than one crop for the pe'ah contribution, so each crop is shown in that case.)  
 
 <!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
 <!-- Wed Oct  2 21:49:54 2013 -->
@@ -290,438 +289,33 @@ Individual results for the year are listed in the table below; some gardeners ha
    </TABLE>
 
 
-Congratulations Courtney and Michelle and Julie and David! They had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
+Congratulations Courtney, Michelle, Julie and David! These two groups had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
 
 ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-21.png) ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-22.png) 
 
 
-A few crops did better than others. 
+A few crops did better than others for the year. 
 
 ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-31.png) ![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-32.png) 
 
 
-
 ## Comparison with prior years
 
-The lower yields were basically across-the-board - it was a bad year for pretty much everything we planted. 
+Lower yields were basically across-the-board - it was a historically bad year for pretty much everything we planted. 
 
 ![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4.png) 
 
 
-Can look at cumulative harvests by week. Here are tomato harvests for the past few years. 
+The charts below show the cumulative harvests (in pounds) by week for the past several years. These can help compare the current harvest at any point to prior years. Choose the crop you want and add / remove years if needed. 
 
-
-<div id = 'chart3' class = 'rChart nvd3'></div>
-<script type='text/javascript'>
- $(document).ready(function(){
-      drawchart3()
-    });
-    function drawchart3(){  
-      var opts = {
- "dom": "chart3",
-"width":    500,
-"height":    300,
-"x": "Week",
-"y": "value",
-"group": "Year",
-"type": "lineChart",
-"id": "chart3" 
-},
-        data = [
- {
- "Crop": "tomatoes",
-"Week": 29,
-"value":      0,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 30,
-"value":      0,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 31,
-"value":      0,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 32,
-"value":      2,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 33,
-"value":   55.5,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 34,
-"value":  67.75,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 35,
-"value":     72,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 36,
-"value":  76.25,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 37,
-"value":  76.25,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 38,
-"value":  76.25,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 39,
-"value":  76.25,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 40,
-"value":  76.25,
-"Year": 2009 
-},
-{
- "Crop": "tomatoes",
-"Week": 29,
-"value":      0,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 30,
-"value":      0,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 31,
-"value":   0.25,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 32,
-"value":  11.25,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 33,
-"value":  28.25,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 34,
-"value":  88.75,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 35,
-"value": 139.25,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 36,
-"value":  169.5,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 37,
-"value":  180.5,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 38,
-"value": 188.75,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 39,
-"value": 192.25,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 40,
-"value": 192.25,
-"Year": 2010 
-},
-{
- "Crop": "tomatoes",
-"Week": 29,
-"value":     15,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 30,
-"value":     15,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 31,
-"value":     15,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 32,
-"value":  34.75,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 33,
-"value": 107.25,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 34,
-"value":  152.5,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 35,
-"value":  171.5,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 36,
-"value": 264.25,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 37,
-"value": 328.25,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 38,
-"value": 342.75,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 39,
-"value": 342.75,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 40,
-"value": 342.75,
-"Year": 2011 
-},
-{
- "Crop": "tomatoes",
-"Week": 29,
-"value":      0,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 30,
-"value":      9,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 31,
-"value":     27,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 32,
-"value":    119,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 33,
-"value":  323.5,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 34,
-"value":  535.5,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 35,
-"value":    594,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 36,
-"value":  623.5,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 37,
-"value":  623.5,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 38,
-"value":  623.5,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 39,
-"value":  623.5,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 40,
-"value":    628,
-"Year": 2012 
-},
-{
- "Crop": "tomatoes",
-"Week": 29,
-"value":      0,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 30,
-"value":      0,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 31,
-"value":      1,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 32,
-"value":     47,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 33,
-"value":   70.5,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 34,
-"value": 102.75,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 35,
-"value": 105.75,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 36,
-"value": 105.75,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 37,
-"value": 107.25,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 38,
-"value": 107.25,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 39,
-"value": 107.25,
-"Year": 2013 
-},
-{
- "Crop": "tomatoes",
-"Week": 40,
-"value": 107.25,
-"Year": 2013 
-} 
-]
-  
-      var data = d3.nest()
-        .key(function(d){
-          return opts.group === undefined ? 'main' : d[opts.group]
-        })
-        .entries(data)
-      
-      nv.addGraph(function() {
-        var chart = nv.models[opts.type]()
-          .x(function(d) { return d[opts.x] })
-          .y(function(d) { return d[opts.y] })
-          .width(opts.width)
-          .height(opts.height)
-         
-        
-          
-        
-
-        
-        
-        
-      
-       d3.select("#" + opts.id)
-        .append('svg')
-        .datum(data)
-        .transition().duration(500)
-        .call(chart);
-
-       nv.utils.windowResize(chart.update);
-       return chart;
-      });
-    };
-</script>
+<style>
+iframe{
+  height:600px;
+  width:600px;
+  margin:auto auto;
+}
+</style>
+<iframe src=assets/fig/chart3.html seamless></iframe>
 
 
 
