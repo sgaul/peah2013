@@ -21,7 +21,7 @@ knitr::opts_chunk$set(comment = NA, results = 'asis', tidy = F, message = T)
 ```
 
 
-```{r chart 1, echo = FALSE, message = FALSE, warning = FALSE}
+```{r chart1, echo = FALSE, message = FALSE, warning = FALSE}
 n1 <- nPlot(y = 'Calories', x = 'Year', 
             width = 500, height = 300,
             data = ddply(peah, .(Year), summarise, 
@@ -30,13 +30,13 @@ n1 <- nPlot(y = 'Calories', x = 'Year',
             type = 'lineChart')
 n1$xAxis(axisLabel='Year')
 n1$yAxis(tickFormat = "#!function(d) {return d3.format(',.0f')(d)}!#", axisLabel='Calories')
-n1$chart(forceY = c(0,170000))
+n1$chart(forceY = c(0,170000), margin = list(left = 80))
 n1$print('chart1')
 ```
 
 Here is the same result in pounds harvested. 
 
-```{r chart 2, echo = FALSE, message = FALSE, warning = FALSE}
+```{r chart2, echo = FALSE, message = FALSE, warning = FALSE}
 n1 <- nPlot(y = 'Pounds', x = 'Year', 
             width = 500, height = 300,
             data = ddply(peah, .(Year), summarise, 
@@ -45,7 +45,7 @@ n1 <- nPlot(y = 'Pounds', x = 'Year',
             type = 'lineChart')
 n1$xAxis(axisLabel='Year')
 n1$yAxis(tickFormat = "#!function(d) {return d3.format(',.0f')(d)}!#", axisLabel='Pounds')
-n1$chart(forceY = c(0,1700))
+n1$chart(forceY = c(0,1700), margin = list(left = 80))
 n1$print('chart2')
 ```
 
@@ -59,12 +59,14 @@ library(xtable)
 table <- ddply(peah13, .(Name, Crop), summarise, 
                Pounds = round(sum(Pounds),0), 
                Calories = round(sum(Calories),0))
-print(xtable(table, digits = 0), type = "html")
+print(xtable(table, digits = 0), type = "html", include.rownames = F)
 ```
+
+The full data for all years can be found [here](https://docs.google.com/spreadsheet/ccc?key=0AlYsW526rxsmdDhIVzM0VDYzRkdLOXlvcldfQkJtcnc&usp=sharing). 
 
 Congratulations Courtney, Michelle, Julie and David! These two groups had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
 
-```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=3}
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=5}
 peah13byplot <- ddply(peah13, .(Name), summarise, Pounds = sum(Pounds), Calories = sum(Calories))
 peah13byplot$Name <- reorder(peah13byplot$Name, peah13byplot$Calories)
 qplot(data = peah13byplot, y = Name, x = Calories) + 
@@ -79,7 +81,7 @@ qplot(data = peah13byplot, y = Name, x = Pounds) +
 
 A few crops did better than others for the year. 
 
-```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=3}
+```{r echo = FALSE, message = FALSE, warning = FALSE, fig.height=5}
 peah13bycrop <- ddply(peah13, .(Crop), summarise, Pounds = sum(Pounds), Calories = sum(Calories))
 peah13bycrop$Crop <- reorder(peah13bycrop$Crop, peah13bycrop$Calories)
 qplot(data = peah13bycrop, y = Crop, x = Calories) + 
@@ -102,6 +104,7 @@ ggplot(data = subset(yearly, Crop %in% unique(peah13$Crop)), aes(x = Year, y = C
   scale_y_continuous(labels = comma) + 
   geom_point(data = subset(yearly, Year == 2013 & Crop %in% unique(peah13$Crop)), aes(x = Year, y = Calories.per.plot), colour = "red") + 
   theme_bw() + 
+  labs(title = "Crop harvest trends by year") +
   facet_wrap(~ Crop)
 ```
 
@@ -125,12 +128,14 @@ for (i in 1:length(crops))
    x <- melt(as.data.frame(x), id.vars = c("Crop", "Week"))
    cumsum <- rbind(cumsum, x)
 }
-cumsum <- cast(cumsum, Week + variable ~ Crop, value = "value", sum)
+cumsum <- cast(subset(cumsum, Crop != 'NA'), 
+               Week + variable ~ Crop, value = "value", sum)
 
 p <- nPlot(tomatoes ~ Week, 
            group = "variable", width = 500,
-           data = test, 
+           data = cumsum, 
            type = 'lineChart')
+p$chart(margin = list(right = 100))
 p$addControls("y", value = "tomatoes", values = levels(cumul$Crop))
 p
 ```

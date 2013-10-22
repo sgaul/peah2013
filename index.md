@@ -113,6 +113,9 @@ mode        : selfcontained # {standalone, draft}
          
         chart
   .forceY([      0, 1.7e+05 ])
+  .margin({
+ "left":     80 
+})
           
         chart.xAxis
   .axisLabel("Year")
@@ -232,6 +235,9 @@ Here is the same result in pounds harvested.
          
         chart
   .forceY([      0,   1700 ])
+  .margin({
+ "left":     80 
+})
           
         chart.xAxis
   .axisLabel("Year")
@@ -260,34 +266,36 @@ Here is the same result in pounds harvested.
 
 Individual results for the year are listed in the table below. (Some gardeners harvested more than one crop for the pe'ah contribution, so each crop is shown in that case.)  
 
-<!-- html table generated in R 3.0.2 by xtable 1.7-1 package -->
-<!-- Wed Oct  2 21:49:54 2013 -->
+<!-- html table generated in R 3.0.1 by xtable 1.7-1 package -->
+<!-- Mon Oct 21 21:41:21 2013 -->
 <TABLE border=1>
-<TR> <TH>  </TH> <TH> Name </TH> <TH> Crop </TH> <TH> Pounds </TH> <TH> Calories </TH>  </TR>
-  <TR> <TD align="right"> 1 </TD> <TD> Alan and Charlene and Erika </TD> <TD> beans </TD> <TD align="right"> 53 </TD> <TD align="right"> 7494 </TD> </TR>
-  <TR> <TD align="right"> 2 </TD> <TD> Courtney and Michelle </TD> <TD> corn </TD> <TD align="right"> 29 </TD> <TD align="right"> 12903 </TD> </TR>
-  <TR> <TD align="right"> 3 </TD> <TD> Courtney and Michelle </TD> <TD> squash </TD> <TD align="right"> 1 </TD> <TD align="right"> 73 </TD> </TR>
-  <TR> <TD align="right"> 4 </TD> <TD> Courtney and Michelle </TD> <TD> tomatoes </TD> <TD align="right"> 2 </TD> <TD align="right"> 153 </TD> </TR>
-  <TR> <TD align="right"> 5 </TD> <TD> David Jones </TD> <TD> lettuce </TD> <TD align="right"> 15 </TD> <TD align="right"> 1022 </TD> </TR>
-  <TR> <TD align="right"> 6 </TD> <TD> Debbie and Holly and Keith </TD> <TD> squash </TD> <TD align="right"> 75 </TD> <TD align="right"> 5448 </TD> </TR>
-  <TR> <TD align="right"> 7 </TD> <TD> Gary Mitchell and Co. </TD> <TD> tomatoes </TD> <TD align="right"> 6 </TD> <TD align="right"> 409 </TD> </TR>
-  <TR> <TD align="right"> 8 </TD> <TD> Gary S. And Phil </TD> <TD> eggplant </TD> <TD align="right"> 29 </TD> <TD align="right"> 3187 </TD> </TR>
-  <TR> <TD align="right"> 9 </TD> <TD> Jennifer and Robyn </TD> <TD> zucchini </TD> <TD align="right"> 80 </TD> <TD align="right"> 5793 </TD> </TR>
-  <TR> <TD align="right"> 10 </TD> <TD> Julie and David Chevan </TD> <TD> tomatoes </TD> <TD align="right"> 93 </TD> <TD align="right"> 6333 </TD> </TR>
-  <TR> <TD align="right"> 11 </TD> <TD> Karen and Ilana </TD> <TD> kale </TD> <TD align="right"> 14 </TD> <TD align="right"> 3121 </TD> </TR>
-  <TR> <TD align="right"> 12 </TD> <TD> Len and Avery Grauer and Josh </TD> <TD> cabbage </TD> <TD align="right"> 18 </TD> <TD align="right"> 2015 </TD> </TR>
-  <TR> <TD align="right"> 13 </TD> <TD> Len and Avery Grauer and Josh </TD> <TD> squash </TD> <TD align="right"> 3 </TD> <TD align="right"> 218 </TD> </TR>
-  <TR> <TD align="right"> 14 </TD> <TD> Len and Avery Grauer and Josh </TD> <TD> turnips </TD> <TD align="right"> 15 </TD> <TD align="right"> 1907 </TD> </TR>
-  <TR> <TD align="right"> 15 </TD> <TD> Leslie and Priscilla </TD> <TD> peppers </TD> <TD align="right"> 18 </TD> <TD align="right"> 1680 </TD> </TR>
-  <TR> <TD align="right"> 16 </TD> <TD> Mash and Dan and Avi </TD> <TD> basil </TD> <TD align="right"> 1 </TD> <TD align="right"> 104 </TD> </TR>
-  <TR> <TD align="right"> 17 </TD> <TD> Mash and Dan and Avi </TD> <TD> cucumbers </TD> <TD align="right"> 74 </TD> <TD align="right"> 5056 </TD> </TR>
-  <TR> <TD align="right"> 18 </TD> <TD> Mash and Dan and Avi </TD> <TD> tomatoes </TD> <TD align="right"> 6 </TD> <TD align="right"> 409 </TD> </TR>
-  <TR> <TD align="right"> 19 </TD> <TD> Melinda and Betsy </TD> <TD> broccoli </TD> <TD align="right"> 4 </TD> <TD align="right"> 617 </TD> </TR>
-  <TR> <TD align="right"> 20 </TD> <TD> Rabbi and Ana </TD> <TD> corn </TD> <TD align="right"> 2 </TD> <TD align="right"> 667 </TD> </TR>
-  <TR> <TD align="right"> 21 </TD> <TD> Sue and Scott and Madeline and Lilo </TD> <TD> collards </TD> <TD align="right"> 66 </TD> <TD align="right"> 9057 </TD> </TR>
-  <TR> <TD align="right"> 22 </TD> <TD> Sue and Scott and Madeline and Lilo </TD> <TD> lettuce </TD> <TD align="right"> 3 </TD> <TD align="right"> 221 </TD> </TR>
+<TR> <TH> Name </TH> <TH> Crop </TH> <TH> Pounds </TH> <TH> Calories </TH>  </TR>
+  <TR> <TD> Alan and Charlene and Erika </TD> <TD> beans </TD> <TD align="right"> 53 </TD> <TD align="right"> 7494 </TD> </TR>
+  <TR> <TD> Courtney and Michelle </TD> <TD> corn </TD> <TD align="right"> 29 </TD> <TD align="right"> 12903 </TD> </TR>
+  <TR> <TD> Courtney and Michelle </TD> <TD> squash </TD> <TD align="right"> 1 </TD> <TD align="right"> 73 </TD> </TR>
+  <TR> <TD> Courtney and Michelle </TD> <TD> tomatoes </TD> <TD align="right"> 2 </TD> <TD align="right"> 153 </TD> </TR>
+  <TR> <TD> David J.  </TD> <TD> lettuce </TD> <TD align="right"> 15 </TD> <TD align="right"> 1022 </TD> </TR>
+  <TR> <TD> Debbie and Holly and Keith </TD> <TD> squash </TD> <TD align="right"> 75 </TD> <TD align="right"> 5448 </TD> </TR>
+  <TR> <TD> Gary M. and Co. </TD> <TD> tomatoes </TD> <TD align="right"> 6 </TD> <TD align="right"> 409 </TD> </TR>
+  <TR> <TD> Gary S. And Phil </TD> <TD> eggplant </TD> <TD align="right"> 29 </TD> <TD align="right"> 3187 </TD> </TR>
+  <TR> <TD> Jennifer and Robyn </TD> <TD> zucchini </TD> <TD align="right"> 80 </TD> <TD align="right"> 5793 </TD> </TR>
+  <TR> <TD> Julie and David </TD> <TD> tomatoes </TD> <TD align="right"> 93 </TD> <TD align="right"> 6333 </TD> </TR>
+  <TR> <TD> Karen and Ilana </TD> <TD> kale </TD> <TD align="right"> 14 </TD> <TD align="right"> 3121 </TD> </TR>
+  <TR> <TD> Len and Avery and Josh </TD> <TD> cabbage </TD> <TD align="right"> 18 </TD> <TD align="right"> 2015 </TD> </TR>
+  <TR> <TD> Len and Avery and Josh </TD> <TD> squash </TD> <TD align="right"> 3 </TD> <TD align="right"> 218 </TD> </TR>
+  <TR> <TD> Len and Avery and Josh </TD> <TD> turnips </TD> <TD align="right"> 15 </TD> <TD align="right"> 1907 </TD> </TR>
+  <TR> <TD> Leslie and Priscilla </TD> <TD> peppers </TD> <TD align="right"> 18 </TD> <TD align="right"> 1680 </TD> </TR>
+  <TR> <TD> Masha and Dan and Avi </TD> <TD> basil </TD> <TD align="right"> 1 </TD> <TD align="right"> 104 </TD> </TR>
+  <TR> <TD> Masha and Dan and Avi </TD> <TD> cucumbers </TD> <TD align="right"> 74 </TD> <TD align="right"> 5056 </TD> </TR>
+  <TR> <TD> Masha and Dan and Avi </TD> <TD> tomatoes </TD> <TD align="right"> 6 </TD> <TD align="right"> 409 </TD> </TR>
+  <TR> <TD> Melinda and Betsy </TD> <TD> broccoli </TD> <TD align="right"> 4 </TD> <TD align="right"> 617 </TD> </TR>
+  <TR> <TD> Rabbi and Ana </TD> <TD> corn </TD> <TD align="right"> 2 </TD> <TD align="right"> 667 </TD> </TR>
+  <TR> <TD> Sue and Scott and Madeline and Lilo </TD> <TD> collards </TD> <TD align="right"> 66 </TD> <TD align="right"> 9057 </TD> </TR>
+  <TR> <TD> Sue and Scott and Madeline and Lilo </TD> <TD> lettuce </TD> <TD align="right"> 3 </TD> <TD align="right"> 221 </TD> </TR>
    </TABLE>
 
+
+The full data for all years can be found [here](https://docs.google.com/spreadsheet/ccc?key=0AlYsW526rxsmdDhIVzM0VDYzRkdLOXlvcldfQkJtcnc&usp=sharing). 
 
 Congratulations Courtney, Michelle, Julie and David! These two groups had the most successful plots for the last year. Courtney and Michelle harvested over 13,000 calories or roughly one week of food for someone in the New Haven community. 
 
@@ -311,7 +319,7 @@ The charts below show the cumulative harvests (in pounds) by week for the past s
 <style>
 iframe{
   height:600px;
-  width:600px;
+  width:700px;
   margin:auto auto;
 }
 </style>
