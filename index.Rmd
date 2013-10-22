@@ -120,7 +120,7 @@ iframe{
 ```{r chart3, echo = FALSE, message = FALSE, warning = FALSE}
 crops <- unique(cumul$Crop)
 cumul <- cast(subset(peah, Year > 2008), 
-              Crop + Week ~ Year, value = "Pounds", sum)
+              Crop + Week ~ Year, value = "Pounds", sum, add.missing = T)
 cumsum <- data.frame(Crop=NA, Week=NA, variable=NA, value=NA)
 for (i in 1:length(crops)) 
   {x <- subset(cumul, Crop == crops[i])
@@ -135,7 +135,7 @@ p <- nPlot(tomatoes ~ Week,
            group = "variable", width = 500,
            data = cumsum, 
            type = 'lineChart')
-p$chart(margin = list(right = 100))
+p$chart(margin = list(right = 100), interpolate = "basis-open")
 p$addControls("y", value = "tomatoes", values = levels(cumul$Crop))
 p
 ```
